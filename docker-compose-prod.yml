@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  activity:
+    build:
+      context: ./services/activity
+      dockerfile: Dockerfile-prod
+    ports:
+      - 5001:5000
+    env_file:
+      - ./services/activity/.env-prod
+    depends_on:
+      - activity-db
+    secrets:
+      - activity-db_python_password
+
+  activity-db:
+    build:
+      context: ./services/activity-db
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 27017
+    # for debugging on host (dev only)
+    ports:
+      - 27017:27017
+    env_file:
+      - ./services/activity-db/.env-prod
+    secrets:
+      - activity-db_python_password
+      - activity-db_root_password
+
+
+secrets:
+  activity-db_python_password:
+    file: /home/ubuntu/secrets/activity-db_python_password.txt
+  activity-db_root_password:
+    file: /home/ubuntu/secrets/activity-db_root_password.txt
