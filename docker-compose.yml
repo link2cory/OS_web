@@ -34,6 +34,16 @@ services:
       - activity-db_python_password
       - activity-db_root_password
 
+  nginx:
+    build:
+      context: ./services/nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - activity
+
 volumes:
   activity-db_data:
 
