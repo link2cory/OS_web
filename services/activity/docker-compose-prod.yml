@@ -12,3 +12,12 @@ services:
       - manage:app
     env_file:
       - ./.env.d/prod.env
+  nginx:
+    build:
+      context: ./nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - activity
+
