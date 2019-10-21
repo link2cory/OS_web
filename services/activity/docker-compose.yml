@@ -5,18 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        env: ${ENV}
     expose:
       - 5000
     env_file:
-      - ./.env.d/${ENV}.env
+      - ./.env.d/common.env
     depends_on:
       - db
     secrets:
       - db_application_password
-    ports:
-      - "5000:5000"
 
   db:
     build:
