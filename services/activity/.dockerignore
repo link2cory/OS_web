@@ -1,4 +1,9 @@
 .env
+.env.d/*
 .dockerignore
 Dockerfile
-Dockerfile-prod
+docker-compose.yml
+db/*
+Pip*
+secrets/*
+secrets

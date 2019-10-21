@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  activity:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        env: ${ENV}
+    expose:
+      - 5000
+    env_file:
+      - ./.env.d/${ENV}.env
+    depends_on:
+      - db
+    secrets:
+      - db_application_password
+    ports:
+      - "5000:5000"
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 27017
+    env_file:
+      - ./db/.env.d/test.env
+    secrets:
+      - db_application_password
+      - db_root_password
+
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  db_application_password:
+    file: ./secrets/db_application_password.txt

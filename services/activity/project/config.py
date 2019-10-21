@@ -21,10 +21,9 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration"""
     pass
 
-class TestingConfi(BaseConfig):
+class TestConfig(BaseConfig):
     """Testing configuration"""
     TESTING = True
-    pass
 
 class ProductionConfig(BaseConfig):
     """Production configuration"""
