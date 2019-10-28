@@ -12,6 +12,8 @@ flask = "*"
 flask-restful = "*"
 dnspython = "*"
 flask-mongoengine = "*"
+requests = "*"
+lovely-pytest-docker = "*"
 
 [requires]
 python_version = "3.7"
