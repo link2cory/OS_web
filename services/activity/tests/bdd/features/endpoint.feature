@@ -5,6 +5,4 @@ Feature: Activity Endpoint
 
   Scenario: Simple get request
     Given the activity api is queried with no params
-    #And there is some activity data in the database
-    Then the response status code is 200
-    #    And I receive a copy of the data in the database
+    Then the response status code is "200"
