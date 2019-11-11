@@ -4,7 +4,7 @@ import pytest
 
 import requests
 
-scenarios('../features/endpoint.feature')
+scenarios('../features/api_get.feature')
 
 EXTRA_TYPES = {
     'Number': int,
